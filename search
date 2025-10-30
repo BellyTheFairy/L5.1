@@ -1,0 +1,45 @@
+n = list(range(1, 101)) #создаем список
+isk = int(input('Какое число хотите найти от 0 до 100? '))
+
+ind1 = 0                   #индексы поисков
+ind2 = 0
+
+if_in = True                  #для цикла поисков
+if_in1 = True
+
+k = 0               #счетчики
+m = 0
+
+for i in range(0, len(n)):              #линейка
+  k += 1
+  if n[i] == isk:                     #если элемент = искомому
+      ind1 = i
+      if_in = False
+      break
+
+
+left = 0                        #левое значение
+right = len(n)                  #правое
+while if_in1:
+  for i in range(0, len(n)):             #сама бинарка
+    m += 1
+    mid = int((left + right) // 2)             #делитсписок пополам
+    if n[mid] == isk:                         #если по середине искомое
+      ind2 = mid
+      if_in1 = False
+      break
+    elif n[mid] > isk:                          #если искомое левее
+        right = mid 
+    else:                                       #если правее
+        left = mid 
+    if_in1 = False
+
+if if_in == False and if_in1 == False:          #если есть значение
+  print('Индекс элемента: ', ind2, '/', ind1)
+  print('Количество сравнений в линейке:', k)
+  print('Количество сравнений в бинарке:', m)
+
+if if_in == True:                              #если нет
+  print('Неверное значение')
+if if_in1 == True:
+  print('Неверное значение')
