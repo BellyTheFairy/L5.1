@@ -1,0 +1,37 @@
+import random
+
+#create list for bubble
+list0 = list(range(0, 100))            #create list 0-99
+random.shuffle(list0)                     #перемешиваем
+print(list0)
+swapped = True
+ 
+k = 0                                      #количество итераций в каждом сорте
+n = 0
+
+list1 = list0.copy()
+
+#Bubble sort
+while swapped:                              #будет крутиться пока список не будет упорядоченным
+  swapped = False
+  for j in range(len(list0)-1):                        #задаем длинну
+    if list0[j] < list0[j+1]:                        #если левый элемент больше правого, то меняются местами
+      list0[j], list0[j+1] = list0[j+1], list0[j]
+      swapped = True
+      print(list0)                                      #каждую итерацию выводит список
+      k += 1
+
+  
+
+#Selection sort
+for i in range(len(list1)):
+        mini  = i                                      #пусть 1 элемент будет минимальным
+        for j in range(i + 1, len(list1)):   
+            if list1[j] > list1[mini]:                  #находит элемент меньше данного и ставит его правее(меняет местами)
+                mini = j
+        list1[i], list1[mini] = list1[mini], list1[i]
+        print(list1)
+        n += 1
+
+print('Количество сравнений в пузырьке: ', k)
+print('Количество сравнений в выборке: ', n)
